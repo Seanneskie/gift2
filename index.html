@@ -29,31 +29,79 @@
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
     <script src="script.js"></script>
     <script>
-      // Function to update the message based on the screen size
+      // Messages to cycle through for small and large screens
+      const smallScreenMessages = [
+        `<span class="line-1">Happy Birthday!</span><br>
+         <span class="line-2">🎉 Master! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 wait mo lang preload ng vid HAHAHHAH 🎉</span>`,
+        
+        `<span class="line-1">Sheeeeshhhh!</span><br>
+         <span class="line-2">🎉 Gitapos mo ang vid? HAHHAAHA 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 Ito lang meron na pics mo sa laptop HAHHAAHHAH 🎉</span>`,
+        
+        `<span class="line-1">Wishing you happiness!</span><br>
+         <span class="line-2">🎉 You deserve all the best! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 Have an amazing year ahead! 🎉</span>`
+
+         `
+         <span class="line-2">🎉 sa sunod na regalo mo HAHHAAHH ! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 tas di mo tangappin no? krazy  HHAHAHAHHA 🎉</span>`
+
+         `
+         <span class="line-2">🎉 Wow gitapos  🎉</span><br>`
+      ];
+    
+      const largeScreenMessages = [
+      `<span class="line-1">Happy Birthday!</span><br>
+         <span class="line-2">🎉 Master! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 wait mo lang preload ng vid HAHAHHAH 🎉</span>`,
+    
+         `<span class="line-1">Sheeeeshhhh!</span><br>
+         <span class="line-2">🎉 Gitapos mo ang vid? HAHHAAHA 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 Ito lang meron na pics mo sa laptop HAHHAAHHAH 🎉</span>`,
+    
+        
+         `<span class="line-1">Wishing you happiness!</span><br>
+         <span class="line-2">🎉 You deserve all the best! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 Have an amazing year ahead! try mo mobile 🎉</span>`
+      ];
+    
+      let messageIndex = 0; // Index to track the current message
+    
+      // Function to update the message based on screen size and cycle through messages
       function updateMessage() {
         const messageElement = document.querySelector(".message");
         const isSmallScreen = window.matchMedia("(max-width: 400px)").matches; // Check if screen is small
-
-        if (isSmallScreen) {
-          // Change message for small screens
-          messageElement.innerHTML = `
-                <span class="line-1">Happy Birthday!</span><br>
-                <span class="line-2">🎉 Master! 🎉</span><br>
-                <span class="line-2" style="font-size: 12px !important">🎉 wait mo lang preload ng vid HAHAHHAH🎉</span>
-            `;
-        } else {
-          // Original message for larger screens
-          messageElement.innerHTML = `
-                <span class="line-1">🎉 Happy Birthday! Master! 🎉</span><br>
-            `;
-        }
+    
+        // Select message set based on screen size
+        const messages = isSmallScreen ? smallScreenMessages : largeScreenMessages;
+    
+        // Update message content based on screen size and current message
+        messageElement.innerHTML = messages[messageIndex];
+        
+        // Increment message index for the next update
+        messageIndex = (messageIndex + 1) % messages.length; // Loop back to the first message after the last
       }
-
-      // Initial call to set the message on page load
+    
+      // Call updateMessage on page load
       updateMessage();
-
-      // Update message on resize
+    
+      // Update message on window resize
       window.addEventListener("resize", updateMessage);
+    
+      // Counter to limit updates
+      let updateCounter = 0;
+    
+      // Timer to update message every 10 seconds, max 3 times
+      const messageInterval = setInterval(() => {
+        if (updateCounter < 3) {
+          updateMessage();
+          updateCounter++;
+        } else {
+          clearInterval(messageInterval); // Stop updating after 3 times
+        }
+      }, 10000); // 10 seconds interval
     </script>
+    
   </body>
 </html>
