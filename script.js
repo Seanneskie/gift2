@@ -13,12 +13,12 @@ fireworks.start();
 // Transition to Photo Collage after a delay
 const images = [
   './images/image1.webp',
-  './images/image2.jpg',
-  './images/image3.jpg',
-  './images/image4.jpg',
+  './images/image2.JPG',
+  './images/image3.JPG',
+  './images/image4.JPG',
   './images/image5.jfif',
   './images/image6.jfif',
-  './images/image7.jpg',
+  './images/image7.JPG',
   './images/image8.jpg',
   './images/image9.jfif',
 ];

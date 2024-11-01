@@ -34,44 +34,38 @@
         `<span class="line-1">Happy Birthday!</span><br>
          <span class="line-2">🎉 Master! 🎉</span><br>
          <span class="line-2" style="font-size: 12px !important">🎉 wait mo lang preload ng vid HAHAHHAH 🎉</span>`,
-        
+    
         `<span class="line-1">Sheeeeshhhh!</span><br>
          <span class="line-2">🎉 Gitapos mo ang vid? HAHHAAHA 🎉</span><br>
          <span class="line-2" style="font-size: 12px !important">🎉 Ito lang meron na pics mo sa laptop HAHHAAHHAH 🎉</span>`,
-        
+    
         `<span class="line-1">Wishing you happiness!</span><br>
          <span class="line-2">🎉 You deserve all the best! 🎉</span><br>
-         <span class="line-2" style="font-size: 12px !important">🎉 Have an amazing year ahead! 🎉</span>`
-
-         `
-         <span class="line-2">🎉 sa sunod na regalo mo HAHHAAHH ! 🎉</span><br>
-         <span class="line-2" style="font-size: 12px !important">🎉 tas di mo tangappin no? krazy  HHAHAHAHHA 🎉</span>`
-
-         `
-         <span class="line-2">🎉 Wow gitapos  🎉</span><br>`
+         <span class="line-2" style="font-size: 12px !important">🎉 Have an amazing year ahead! 🎉</span>`,
+    
+        `<span class="line-2">🎉 sa sunod na regalo mo HAHHAAHH ! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 tas di mo tangappin no? krazy  HHAHAHAHHA 🎉</span>`,
+    
+        `<span class="line-2">🎉 Wow gitapos 🎉</span><br>`
       ];
     
       const largeScreenMessages = [
-      `<span class="line-1">Happy Birthday!</span><br>
+        `<span class="line-1">Happy Birthday!</span><br>
          <span class="line-2">🎉 Master! 🎉</span><br>
          <span class="line-2" style="font-size: 12px !important">🎉 wait mo lang preload ng vid HAHAHHAH 🎉</span>`,
     
-         `<span class="line-1">Sheeeeshhhh!</span><br>
+        `<span class="line-1">Sheeeeshhhh!</span><br>
          <span class="line-2">🎉 Gitapos mo ang vid? HAHHAAHA 🎉</span><br>
          <span class="line-2" style="font-size: 12px !important">🎉 Ito lang meron na pics mo sa laptop HAHHAAHHAH 🎉</span>`,
     
-        
-         `<span class="line-1">Wishing you happiness!</span><br>
+        `<span class="line-1">Wishing you happiness!</span><br>
          <span class="line-2">🎉 You deserve all the best! 🎉</span><br>
-         <span class="line-2" style="font-size: 12px !important">🎉 Have an amazing year ahead! try mo mobile 🎉</span>`
-         
-         
-         `
-         <span class="line-2">🎉 sa sunod na regalo mo HAHHAAHH ! 🎉</span><br>
-         <span class="line-2" style="font-size: 12px !important">🎉 tas di mo tangappin no? krazy  HHAHAHAHHA 🎉</span>`
-
-         `
-         <span class="line-2">🎉 Wow gitapos  🎉</span><br>`
+         <span class="line-2" style="font-size: 12px !important">🎉 Have an amazing year ahead! try mo mobile 🎉</span>`,
+    
+        `<span class="line-2">🎉 sa sunod na regalo mo HAHHAAHH ! 🎉</span><br>
+         <span class="line-2" style="font-size: 12px !important">🎉 tas di mo tangappin no? krazy  HHAHAHAHHA 🎉</span>`,
+    
+        `<span class="line-2">🎉 Wow gitapos 🎉</span><br>`
       ];
     
       let messageIndex = 0; // Index to track the current message
@@ -100,16 +94,17 @@
       // Counter to limit updates
       let updateCounter = 0;
     
-      // Timer to update message every 10 seconds, max 3 times
+      // Timer to update message every 10 seconds, max 5 times
       const messageInterval = setInterval(() => {
         if (updateCounter < 5) {
           updateMessage();
           updateCounter++;
         } else {
-          clearInterval(messageInterval); // Stop updating after 3 times
+          clearInterval(messageInterval); // Stop updating after 5 times
         }
       }, 10000); // 10 seconds interval
     </script>
+    
     
   </body>
 </html>
