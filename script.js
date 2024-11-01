@@ -34,10 +34,10 @@ images.forEach((imageSrc) => {
   photoCollage.appendChild(img);
 });
 
-// Adjust collage display based on screen size
+// Set up the slideshow for desktop view
 function setupCollageLayout() {
   const allImages = photoCollage.querySelectorAll("img");
-  const imageCount = allImages.length; // Define imageCount based on allImages
+  const imageCount = allImages.length;
 
   if (window.innerWidth < 768) {
     // Mobile: show one image at a time with a transition
@@ -56,10 +56,35 @@ function setupCollageLayout() {
       currentImageIndex = (currentImageIndex + 1) % imageCount; // Move to next image
     }, imageTransitionInterval);
   } else {
-    // Desktop: display images in a 3x3 grid
+    // Desktop: show 3 images per slide
+    const imagesPerSlide = 3;
+    let currentSlideIndex = 0;
+    
+    // Arrange in a 3-column grid
+    photoCollage.style.display = "grid";
     photoCollage.style.gridTemplateColumns = "repeat(3, 1fr)";
-    photoCollage.style.gridTemplateRows = "repeat(3, 1fr)";
-    allImages.forEach((img) => (img.style.display = "block"));
+    
+    // Hide all images initially
+    allImages.forEach((img) => (img.style.display = "none"));
+
+    // Function to update the current slide
+    function showSlide() {
+      // Hide all images
+      allImages.forEach((img) => (img.style.display = "none"));
+      
+      // Show the current set of 3 images
+      for (let i = 0; i < imagesPerSlide; i++) {
+        const imgIndex = (currentSlideIndex * imagesPerSlide + i) % imageCount;
+        allImages[imgIndex].style.display = "block";
+      }
+
+      // Move to the next slide
+      currentSlideIndex = (currentSlideIndex + 1) % Math.ceil(imageCount / imagesPerSlide);
+    }
+
+    // Start the slideshow with an interval
+    showSlide();
+    setInterval(showSlide, 5000); // Change slide every 3 seconds
   }
 }
 
@@ -68,10 +93,13 @@ setupCollageLayout();
 window.addEventListener("resize", setupCollageLayout);
 
 // Set delay for transition from video to photo collage
-const collageDelay = 12000; // 5 seconds delay
+const collageDelay = 12000; // 12 seconds delay
 
-// Transition from video to photo collage after delay
+// Transition from video to photo collage after delay and refresh page
 setTimeout(() => {
   videoBackground.style.opacity = "0";  // Fade out video
   photoCollage.style.opacity = "1";     // Fade in collage
+  setTimeout(() => {
+    location.reload(); // Refresh the page after showing collage
+  }, 30000); // Refresh 5 seconds after the collage transition
 }, collageDelay);
