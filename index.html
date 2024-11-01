@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Fireworks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Video Background -->
+  <video class="background-video" autoplay loop preload="auto">
+      <source src="vid.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+
+  <!-- Collage Background -->
+  <div class="photo-collage" id="photoCollage"></div>
+  
+  <!-- Birthday Message -->
+  <div class="message">
+    <h1>🎉 Happy Birthday! Master!🎉</h1>
+  </div>
+  
+  <!-- Fireworks Library -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Function to update the message based on the screen size
+    function updateMessage() {
+        const messageElement = document.querySelector('.message');
+        const isSmallScreen = window.matchMedia("(max-width: 400px)").matches; // Check if screen is small
+
+        if (isSmallScreen) {
+            // Change message for small screens
+            messageElement.innerHTML = `
+                <span class="line-1">Happy Birthday!</span><br>
+                <span class="line-2">🎉 Master! 🎉</span><br>
+                <span class="line-2" style="font-size: 12px !important">🎉 wait mo lang preload ng vid HAHAHHAH🎉</span>
+            `;
+        } else {
+            // Original message for larger screens
+            messageElement.innerHTML = `
+                <span class="line-1">🎉 Happy Birthday! Master! 🎉</span><br>
+            `;
+        }
+    }
+
+    // Initial call to set the message on page load
+    updateMessage();
+
+    // Update message on resize
+    window.addEventListener('resize', updateMessage);
+
+</script>
+</body>
+</html>
